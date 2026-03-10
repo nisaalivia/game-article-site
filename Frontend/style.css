@@ -1,0 +1,66 @@
+
+.hero-section {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                      url('https://cdn.forza.net/strapi-uploads/assets/xlarge_Forza_Horizon6_Pre_Order_01_City_Night_Race_16x9_f581404a18.webp');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.hero-text { 
+    font-size: 5rem; 
+    font-weight: 900; 
+    line-height: 1; 
+    text-transform: uppercase; 
+}
+
+.navbar-brand img {
+    filter: brightness(0) invert(1);
+}
+
+.nav-link { 
+    color: rgba(255, 255, 255, 0.55) !important; 
+    font-weight: 500; 
+}
+
+.btn-outline-light:hover {
+    background-color: transparent !important;
+    color: white !important;
+    border-color: white !important;
+}
+
+.bg-abu-custom {
+    background-color: #333333; 
+    color: white;             
+}
+
+.bg-abu-custom h2, 
+.bg-abu-custom h3, 
+.bg-abu-custom p {
+    color: white !important;
+}
+
+.card-developer .card-text, 
+.card-developer .card-text strong,
+.card-developer .card-body h5 {
+    color: #000000 !important; 
+}
+
+.card-header {
+    text-align: center;      
+    color: white !important;
+    background-color: #212529 !important; 
+}
+
+#commentList .card, 
+#commentList .card p, 
+#commentList .card strong {
+    color: #212529 !important;
+}
+
+.bg-abu-custom .border-top {
+    border-color: #555 !important;
+}
