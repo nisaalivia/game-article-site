@@ -1,20 +1,10 @@
 const API_BASE_URL = "http://127.0.0.1:8000/api"; 
 const ARTICLE_ID = new URLSearchParams(window.location.search).get('id') || 1;
 
-<<<<<<< HEAD
-const API_BASE_URL = "http://127.0.0.1:8000/api"; 
-const ARTICLE_ID = new URLSearchParams(window.location.search).get('id') || 1;
-
 async function loadData() {
     const articleContainer = document.getElementById('article-container');
     articleContainer.innerHTML = "<p class='text-white'>Memuat data dari server...</p>";
 
-=======
-async function loadData() {
-    const articleContainer = document.getElementById('article-container');
-    articleContainer.innerHTML = "<p class='text-white'>Memuat data dari server...</p>";
-
->>>>>>> c471ee45cb647933d8d1ac479903fc2b53cfd111
     try {
         const response = await fetch(`${API_BASE_URL}/article/${ARTICLE_ID}`);
         if (!response.ok) throw new Error('Failed to fetch article');
