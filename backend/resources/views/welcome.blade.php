@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="refresh" content="0; url=../../../Frontend/index.html">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>Redirecting to Game Article Site...</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -19,9 +20,15 @@
             </style>
         @endif
     </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-            @if (Route::has('login'))
+    <body style="font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #1a1a1a; color: #e0e0e0;">
+        <div style="text-align: center;">
+            <h1 style="color: #ff6b6b; margin-bottom: 20px;">🎮 Game Article Site</h1>
+            <p>Redirecting to the game review site...</p>
+            <p style="margin-top: 20px; font-size: 14px;">
+                If you're not redirected, <a href="../../../Frontend/index.html" style="color: #ff6b6b; text-decoration: none;">click here</a>
+            </p>
+        </div>
+    </body>
                 <nav class="flex items-center justify-end gap-4">
                     @auth
                         <a
