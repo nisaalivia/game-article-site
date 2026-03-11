@@ -13,10 +13,10 @@ class gamereviewController extends Controller
         return view('reviews.index', compact('reviews'));
     }
 
-    public function show($id)
+    public function show($ReviewID)
     {
         // Eager load comments to show feedback from users like Andre and Ara
-        $review = gamereview::with('comments')->findOrFail($id);
+        $review = gamereview::with('comments')->findOrFail($ReviewID);
         return view('reviews.show', compact('review'));
     }
 }
