@@ -15,11 +15,20 @@ class commentController extends Controller
             'Comment' => 'required|string|max:250',
         ]);
 
-        comment::create([
+        $comment = comment::create([
             'ReviewID' => $request->ReviewID,
             'Name' => $request->Name,
             'Comment' => $request->Comment,
         ]);
+
+        // Return JSON response for API requests
+        if ($request->expectsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Comment added successfully!',
+                'comment' => $comment
+            ], 201);
+        }
 
         return back()->with('success', 'Comment added successfully!');
     }
