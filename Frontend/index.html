@@ -16,11 +16,18 @@
                      alt="Forza Logo" style="height: 35px; margin-right: 12px;">
                 <span>FORZA HORIZON</span>
             </a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link btn btn-outline-light ms-3" href="#">News</a>
-                <a class="nav-link btn btn-outline-light ms-3" href="#">Community</a>
-                <a class="nav-link btn btn-outline-light ms-3" href="#">Game Info</a>
-                <a class="nav-link btn btn-outline-light ms-3" href="#">My Forza</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-lg-3 mt-2 mt-lg-0" href="#">News</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-lg-3 mt-2 mt-lg-0" href="#">Community</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-lg-3 mt-2 mt-lg-0" href="#">Game Info</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-lg-3 mt-2 mt-lg-0" href="#">My Forza</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -38,23 +45,22 @@
     <div class="bg-abu-custom py-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                
+                <div class="col-lg-8 order-2 order-lg-1">
                     <article id="article-container"></article>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-0 order-1 order-lg-2 mb-4">
                     <div class="card shadow-sm border-0 card-developer">
                         <div class="card-header bg-dark text-white py-3 text-center">
                             <h5>Tentang Developer</h5>
                         </div>
                         <div class="card-body">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv9c-7o4r4xcXWVyFZqzIh7czhn0f9GaIZKQ&s" 
-                                 alt="Logo Studio" class="img-fluid rounded mb-3 d-block mx-auto">
+                                 alt="Logo Studio" class="img-fluid rounded mb-3 d-block mx-auto" style="max-width: 150px;">
                             
-                            <p class="card-text">
-                                <strong>Nama Studio:</strong> Playground Games<br>
-                                <strong>Spesialisasi:</strong> Racing Simulation<br>
-                                <strong>Lokasi:</strong> Leamington Spa, Inggris
+                            <p class="card-text text-dark" id="dev-info">
+                                Memuat info...
                             </p>
                             <hr>
                             <button class="btn btn-primary w-100">Kunjungi Website</button>

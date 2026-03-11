@@ -11,9 +11,7 @@ async function loadData() {
 
         displayArticle(data.article);
         displayGameInfo(data.gameInfo);
-
         loadComments();
-
     } catch (error) {
         console.error("Error:", error);
         articleContainer.innerHTML = "<p class='text-danger'>Gagal memuat data dari server. Pastikan API berjalan.</p>";
@@ -59,10 +57,26 @@ function displayGameInfo(info) {
 }
 
 async function postComment() {
-    const name = document.getElementById('userName').value;
-    const text = document.getElementById('commentBox').value;
+    const nameInput = document.getElementById('userName');
+    const commentInput = document.getElementById('commentBox');
+    const commentList = document.getElementById('commentList');
+    
+    const name = nameInput.value.trim();
+    const text = commentInput.value.trim();
 
-    if (!name.trim() || !text.trim()) return alert("Harap isi nama dan komentar!");
+    if (!name || !text) return alert("Harap isi nama dan komentar!");
+
+    const newComment = document.createElement('div');
+    newComment.className = "card p-3 mb-2 shadow-sm border-0";
+    newComment.innerHTML = `
+        <strong>@${name}</strong>
+        <p class="mb-0">${text}</p>
+        <small class="text-muted">Sedang dikirim...</small>
+    `;
+    commentList.prepend(newComment); 
+
+    nameInput.value = "";
+    commentInput.value = "";
 
     try {
         const response = await fetch(`${API_BASE_URL}/comments`, {
@@ -72,12 +86,14 @@ async function postComment() {
         });
 
         if (response.ok) {
-            document.getElementById('userName').value = "";
-            document.getElementById('commentBox').value = "";
-            loadComments(); 
+           
+            newComment.querySelector('small').innerText = "Terkirim";
+        } else {
+            throw new Error();
         }
     } catch (error) {
         alert("Gagal mengirim komentar ke server.");
+        newComment.remove(); 
     }
 }
 
@@ -87,9 +103,9 @@ async function loadComments() {
         const comments = await response.json();
         
         const list = document.getElementById('commentList');
-        list.innerHTML = ""; // 
+        list.innerHTML = ""; 
         
-        comments.forEach(c => {
+        [...comments].reverse().forEach(c => {
             list.innerHTML += `
                 <div class="card p-3 mb-2 shadow-sm border-0">
                     <strong>@${c.name}</strong>
@@ -101,4 +117,5 @@ async function loadComments() {
         console.log("Belum ada komentar di server.");
     }
 }
+
 window.onload = loadData;

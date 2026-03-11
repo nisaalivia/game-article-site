@@ -64,3 +64,41 @@
 .bg-abu-custom .border-top {
     border-color: #555 !important;
 }
+
+@media (min-width: 992px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: row;
+        gap: 20px; 
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #212529; 
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+    
+    .nav-link {
+        color: white !important;
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+.navbar-brand img {
+    max-height: 40px; 
+    width: auto;
+}
+.card-developer img {
+    max-width: 200px; /* Gambar tidak akan membesar lebih dari 200px */
+    height: auto;
+}
+/* Di style.css */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .card-developer {
+        max-width: 400px; /* Batasi lebar kartu agar tidak melebar */
+        margin: 0 auto;    /* Posisikan di tengah */
+    }
+}
