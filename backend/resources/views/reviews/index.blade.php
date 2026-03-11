@@ -13,9 +13,11 @@
                             {{ $review->Judul }}
                         </a>
                     </h2>
+                    @if($review->created_at)
                     <p class="review-meta">
-                        By {{ $review->author }} | {{ $review->created_at->format('M d, Y') }}
+                        {{ $review->created_at->format('M d, Y') }}
                     </p>
+                    @endif
                     <p>{{ Str::limit($review->Deskripsi, 200) }}</p>
                     <a href="{{ route('reviews.show', $review->ReviewID) }}" class="read-more">Read Full Review</a>
                 </div>

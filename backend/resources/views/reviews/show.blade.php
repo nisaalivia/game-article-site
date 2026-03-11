@@ -3,9 +3,11 @@
 @section('content')
 <div class="review-detail">
     <h1>{{ $review->Judul }}</h1>
+    @if($review->created_at)
     <p class="review-meta">
-        By {{ $review->author }} | {{ $review->created_at->format('M d, Y') }}
+        {{ $review->created_at->format('M d, Y') }}
     </p>
+    @endif
     
     <div class="review-content">
         <h3>Deskripsi</h3>
