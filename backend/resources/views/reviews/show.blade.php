@@ -26,9 +26,11 @@
             <h3>Comments ({{ $review->comments->count() }})</h3>
             @foreach($review->comments as $comment)
                 <div class="comment">
-                    <p class="comment-author"><strong>{{ $comment->author }}</strong></p>
-                    <p class="comment-text">{{ $comment->content }}</p>
+                    <p class="comment-author"><strong>{{ $comment->Name }}</strong></p>
+                    <p class="comment-text">{{ $comment->Comment }}</p>
+                    @if($comment->created_at)
                     <span class="comment-date">{{ $comment->created_at->format('M d, Y') }}</span>
+                    @endif
                 </div>
             @endforeach
         </div>
