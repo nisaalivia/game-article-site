@@ -1,23 +1,28 @@
+const API_BASE_URL = "http://127.0.0.1:8000/api"; 
+const ARTICLE_ID = new URLSearchParams(window.location.search).get('id') || 1;
 
-const API_BASE_URL = "http://localhost:3000"; 
-
+// 1. FUNGSI UTAMA MEMUAT DATA
 async function loadData() {
     const articleContainer = document.getElementById('article-container');
     articleContainer.innerHTML = "<p class='text-white'>Memuat data dari server...</p>";
 
     try {
-        const response = await fetch(`${API_BASE_URL}/article-data`);
+        const response = await fetch(`${API_BASE_URL}/article/${ARTICLE_ID}`);
+        if (!response.ok) throw new Error('Failed to fetch article');
+        
         const data = await response.json();
 
         displayArticle(data.article);
         displayGameInfo(data.gameInfo);
-        loadComments();
+        displayComments(data.comments); // Menggunakan fungsi display yang rapi
+
     } catch (error) {
         console.error("Error:", error);
-        articleContainer.innerHTML = "<p class='text-danger'>Gagal memuat data dari server. Pastikan API berjalan.</p>";
+        articleContainer.innerHTML = "<p class='text-danger'>Gagal memuat data dari server.</p>";
     }
 }
 
+// 2. TAMPILKAN ARTIKEL & INFO
 function displayArticle(article) {
     const container = document.getElementById('article-container');
     container.innerHTML = `
@@ -27,13 +32,13 @@ function displayArticle(article) {
             <div class="col-md-6">
                 <h4 class="text-white">Kelebihan</h4>
                 <ul class="list-unstyled">
-                    ${article.pros.map(item => `<li class="text-white">- <strong>${item.split(':')[0]}:</strong> ${item.split(':')[1]}</li>`).join('')}
+                    ${article.pros.map(item => `<li class="text-white">- ${item.trim()}</li>`).join('')}
                 </ul>
             </div>
             <div class="col-md-6">
                 <h4 class="text-white">Kekurangan</h4>
                 <ul class="list-unstyled">
-                    ${article.cons.map(item => `<li class="text-white">- <strong>${item.split(':')[0]}:</strong> ${item.split(':')[1]}</li>`).join('')}
+                    ${article.cons.map(item => `<li class="text-white">- ${item.trim()}</li>`).join('')}
                 </ul>
             </div>
         </div>
@@ -56,65 +61,54 @@ function displayGameInfo(info) {
     }
 }
 
+// 3. FUNGSI KOMENTAR (TAMPILAN & POST)
+function displayComments(comments) {
+    const commentList = document.getElementById('commentList');
+    if (!commentList) return;
+    
+    if (comments && comments.length > 0) {
+        commentList.innerHTML = comments.map(c => `
+            <div class="card p-3 mb-2 shadow-sm border-0">
+                <strong>@${c.name}</strong>
+                <p class="mb-0">${c.text}</p>
+                ${c.date ? `<small class="text-muted">${c.date}</small>` : ''}
+            </div>
+        `).join('');
+    } else {
+        commentList.innerHTML = '<p class="text-muted">Belum ada komentar.</p>';
+    }
+}
+
 async function postComment() {
     const nameInput = document.getElementById('userName');
     const commentInput = document.getElementById('commentBox');
-    const commentList = document.getElementById('commentList');
-    
-    const name = nameInput.value.trim();
-    const text = commentInput.value.trim();
 
-    if (!name || !text) return alert("Harap isi nama dan komentar!");
-
-    const newComment = document.createElement('div');
-    newComment.className = "card p-3 mb-2 shadow-sm border-0";
-    newComment.innerHTML = `
-        <strong>@${name}</strong>
-        <p class="mb-0">${text}</p>
-        <small class="text-muted">Sedang dikirim...</small>
-    `;
-    commentList.prepend(newComment); 
-
-    nameInput.value = "";
-    commentInput.value = "";
+    if (!nameInput.value.trim() || !commentInput.value.trim()) {
+        return alert("Harap isi nama dan komentar!");
+    }
 
     try {
         const response = await fetch(`${API_BASE_URL}/comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, text })
+            body: JSON.stringify({ 
+                ReviewID: ARTICLE_ID,
+                Name: nameInput.value,
+                Comment: commentInput.value
+            })
         });
 
         if (response.ok) {
-           
-            newComment.querySelector('small').innerText = "Terkirim";
+            nameInput.value = "";
+            commentInput.value = "";
+            // Hanya refresh daftar komentar, bukan seluruh halaman
+            loadData(); 
         } else {
-            throw new Error();
+            alert("Gagal mengirim komentar.");
         }
     } catch (error) {
-        alert("Gagal mengirim komentar ke server.");
-        newComment.remove(); 
-    }
-}
-
-async function loadComments() {
-    try {
-        const response = await fetch(`${API_BASE_URL}/comments`);
-        const comments = await response.json();
-        
-        const list = document.getElementById('commentList');
-        list.innerHTML = ""; 
-        
-        [...comments].reverse().forEach(c => {
-            list.innerHTML += `
-                <div class="card p-3 mb-2 shadow-sm border-0">
-                    <strong>@${c.name}</strong>
-                    <p class="mb-0">${c.text}</p>
-                </div>
-            `;
-        });
-    } catch (error) {
-        console.log("Belum ada komentar di server.");
+        alert("Gagal terhubung ke server.");
+        console.error(error);
     }
 }
 

@@ -16,17 +16,15 @@
                      alt="Forza Logo" style="height: 35px; margin-right: 12px;">
                 <span>FORZA HORIZON</span>
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-lg-3 mt-2 mt-lg-0" href="#">News</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-lg-3 mt-2 mt-lg-0" href="#">Community</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-lg-3 mt-2 mt-lg-0" href="#">Game Info</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-lg-3 mt-2 mt-lg-0" href="#">My Forza</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Game Info</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">My Forza</a></li>
                 </ul>
             </div>
         </div>
@@ -34,11 +32,7 @@
 
     <section class="hero-section">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h1 class="hero-text">GAME REVIEW</h1>
-                </div>
-            </div>
+            <h1 class="hero-text">GAME REVIEW</h1>
         </div>
     </section>
 
@@ -46,30 +40,27 @@
         <div class="container">
             <div class="row">
                 
-                <div class="col-lg-8 order-2 order-lg-1">
-                    <article id="article-container"></article>
-                </div>
-
-                <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-0 order-1 order-lg-2 mb-4">
+                <div class="col-md-4 order-1 order-md-2">
                     <div class="card shadow-sm border-0 card-developer">
                         <div class="card-header bg-dark text-white py-3 text-center">
                             <h5>Tentang Developer</h5>
                         </div>
                         <div class="card-body">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv9c-7o4r4xcXWVyFZqzIh7czhn0f9GaIZKQ&s" 
-                                 alt="Logo Studio" class="img-fluid rounded mb-3 d-block mx-auto" style="max-width: 150px;">
-                            
-                            <p class="card-text text-dark" id="dev-info">
-                                Memuat info...
-                            </p>
+                                 alt="Logo Studio" class="img-fluid rounded mb-3 d-block mx-auto">
+                            <p class="card-text text-dark" id="dev-info">Memuat info...</p>
                             <hr>
                             <button class="btn btn-primary w-100">Kunjungi Website</button>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-8 order-2 order-md-1">
+                    <article id="article-container"></article>
+                </div>
             </div>
 
-            <section class="mt-5 pt-5 border-top">
+            <section class="mt-5 pt-5 border-top border-secondary">
                 <h3>Tinggalkan Komentar</h3>
                 <div class="card p-3 mb-4 text-dark">
                     <input type="text" id="userName" class="form-control mb-2" placeholder="Nama Anda">

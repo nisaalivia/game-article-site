@@ -1,4 +1,4 @@
-
+/* 1. HERO SECTION */
 .hero-section {
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
                       url('https://cdn.forza.net/strapi-uploads/assets/xlarge_Forza_Horizon6_Pre_Order_01_City_Night_Race_16x9_f581404a18.webp');
@@ -10,95 +10,53 @@
     color: white;
 }
 
-.hero-text { 
-    font-size: 5rem; 
-    font-weight: 900; 
-    line-height: 1; 
-    text-transform: uppercase; 
+.hero-text { font-size: 5rem; font-weight: 900; line-height: 1; text-transform: uppercase; }
+
+/* 2. NAVBAR */
+.navbar-brand img { filter: brightness(0) invert(1); max-height: 40px; width: auto; }
+.nav-link { color: rgba(255, 255, 255, 0.55) !important; font-weight: 500; }
+
+/* 3. MAIN CONTENT (BACKGROUND ABU) */
+/* Pastikan ini tidak tertutup oleh aturan lain */
+.bg-abu-custom { 
+    background-color: #333333 !important; 
+    padding: 3rem 0; 
+    color: white; 
 }
 
-.navbar-brand img {
-    filter: brightness(0) invert(1);
+/* 4. SIDEBAR & CARD */
+.card-developer {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.nav-link { 
-    color: rgba(255, 255, 255, 0.55) !important; 
-    font-weight: 500; 
-}
-
-.btn-outline-light:hover {
-    background-color: transparent !important;
-    color: white !important;
-    border-color: white !important;
-}
-
-.bg-abu-custom {
-    background-color: #333333; 
-    color: white;             
-}
-
-.bg-abu-custom h2, 
-.bg-abu-custom h3, 
-.bg-abu-custom p {
-    color: white !important;
+.card-developer img {
+    max-width: 120px !important;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .card-developer .card-text, 
-.card-developer .card-text strong,
-.card-developer .card-body h5 {
+.card-developer .card-body h5 { 
     color: #000000 !important; 
 }
 
 .card-header {
-    text-align: center;      
+    text-align: center;
     color: white !important;
-    background-color: #212529 !important; 
+    background-color: #212529 !important;
 }
 
+/* 5. KOMENTAR */
 #commentList .card, 
 #commentList .card p, 
-#commentList .card strong {
-    color: #212529 !important;
-}
+#commentList .card strong { color: #212529 !important; }
 
-.bg-abu-custom .border-top {
-    border-color: #555 !important;
-}
-
-@media (min-width: 992px) {
-    .navbar-nav {
+/* 6. RESPONSIVE GRID (Tetap di samping mulai dari Tablet 768px) */
+@media (min-width: 768px) {
+    .row {
         display: flex;
-        flex-direction: row;
-        gap: 20px; 
-    }
-}
-
-@media (max-width: 991.98px) {
-    .navbar-collapse {
-        background-color: #212529; 
-        padding: 15px;
-        border-radius: 8px;
-        margin-top: 10px;
-    }
-    
-    .nav-link {
-        color: white !important;
-        text-align: center;
-        padding: 10px 0;
-    }
-}
-.navbar-brand img {
-    max-height: 40px; 
-    width: auto;
-}
-.card-developer img {
-    max-width: 200px; /* Gambar tidak akan membesar lebih dari 200px */
-    height: auto;
-}
-/* Di style.css */
-@media (min-width: 768px) and (max-width: 1199px) {
-    .card-developer {
-        max-width: 400px; /* Batasi lebar kartu agar tidak melebar */
-        margin: 0 auto;    /* Posisikan di tengah */
+        flex-wrap: nowrap; /* Mengunci agar tidak turun ke bawah */
     }
 }
