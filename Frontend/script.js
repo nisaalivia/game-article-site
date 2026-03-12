@@ -1,10 +1,25 @@
 const API_BASE_URL = "http://127.0.0.1:8000/api"; 
 const ARTICLE_ID = new URLSearchParams(window.location.search).get('id') || 1;
 
-// 1. FUNGSI UTAMA MEMUAT DATA
+function renderStars(rating) {
+    let stars = "";
+    const totalStars = Math.round(rating); 
+    
+    for (let i = 1; i <= 5; i++) {
+        if (i <= totalStars) {
+            stars += "⭐"; 
+        } else {
+            stars += "☆"; 
+        }
+    }
+    return stars;
+}
+
 async function loadData() {
     const articleContainer = document.getElementById('article-container');
-    articleContainer.innerHTML = "<p class='text-white'>Memuat data dari server...</p>";
+    if (articleContainer) {
+        articleContainer.innerHTML = "<p class='text-white'>Memuat data dari server...</p>";
+    }
 
     try {
         const response = await fetch(`${API_BASE_URL}/article/${ARTICLE_ID}`);
@@ -14,17 +29,20 @@ async function loadData() {
 
         displayArticle(data.article);
         displayGameInfo(data.gameInfo);
-        displayComments(data.comments); // Menggunakan fungsi display yang rapi
+        displayComments(data.comments); 
 
     } catch (error) {
         console.error("Error:", error);
-        articleContainer.innerHTML = "<p class='text-danger'>Gagal memuat data dari server.</p>";
+        if (articleContainer) {
+            articleContainer.innerHTML = "<p class='text-danger'>Gagal memuat data dari server.</p>";
+        }
     }
 }
 
-// 2. TAMPILKAN ARTIKEL & INFO
 function displayArticle(article) {
     const container = document.getElementById('article-container');
+    if (!container) return;
+
     container.innerHTML = `
         <h2 class="mb-3">${article.title}</h2>
         <p>${article.description}</p>
@@ -45,7 +63,7 @@ function displayArticle(article) {
         <div class="card bg-dark text-white p-4 mt-4 border-0">
             <h4 class="text-info">Kesimpulan</h4>
             <p>${article.summary}</p>
-            <h3 class="text-warning">Overall Rating: ${article.rating}</h3>
+            <h3 class="text-warning">Overall Rating: ${renderStars(article.rating)} (${article.rating}/5)</h3>
         </div>
     `;
 }
@@ -61,7 +79,6 @@ function displayGameInfo(info) {
     }
 }
 
-// 3. FUNGSI KOMENTAR (TAMPILAN & POST)
 function displayComments(comments) {
     const commentList = document.getElementById('commentList');
     if (!commentList) return;
@@ -75,7 +92,7 @@ function displayComments(comments) {
             </div>
         `).join('');
     } else {
-        commentList.innerHTML = '<p class="text-muted">Belum ada komentar.</p>';
+        commentList.innerHTML = '<p class="text-muted">Belum ada komentar. Jadi yang pertama!</p>';
     }
 }
 
@@ -101,7 +118,7 @@ async function postComment() {
         if (response.ok) {
             nameInput.value = "";
             commentInput.value = "";
-            // Hanya refresh daftar komentar, bukan seluruh halaman
+        
             loadData(); 
         } else {
             alert("Gagal mengirim komentar.");
