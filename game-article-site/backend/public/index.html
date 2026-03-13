@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forza Horizon Review</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fz-navbar" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Forza_logo_2020.svg" alt="Forza Logo" class="navbar-logo">
+                <span class="brand-text">FORZA HORIZON</span>
+            </a>
+            <button class="burger-btn" id="burgerBtn" aria-label="Toggle menu">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link fz-nav-link" href="#">News</a></li>
+                    <li class="nav-item"><a class="nav-link fz-nav-link" href="#">Community</a></li>
+                    <li class="nav-item"><a class="nav-link fz-nav-link" href="#">Game Info</a></li>
+                    <li class="nav-item"><a class="nav-link fz-nav-link active" href="#">My Forza</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <ul class="mobile-nav-list">
+                <li><a href="#" class="mobile-nav-link" onclick="closeMenu()">News</a></li>
+                <li><a href="#" class="mobile-nav-link" onclick="closeMenu()">Community</a></li>
+                <li><a href="#" class="mobile-nav-link" onclick="closeMenu()">Game Info</a></li>
+                <li><a href="#" class="mobile-nav-link" onclick="closeMenu()">My Forza</a></li>
+            </ul>
+            <div class="mobile-menu-footer">© 2025 Forza Horizon Review</div>
+        </div>
+    </div>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-badge">ULASAN TERBARU</div>
+            <h1 class="hero-title">GAME<br><span class="hero-title-accent">REVIEW</span></h1>
+            <p class="hero-subtitle">Forza Horizon Series — Deep Dive Analysis</p>
+            <div class="hero-scroll-hint">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-bg py-5">
+        <div class="container">
+            <div class="row g-4 align-items-start">
+
+                <div class="col-12 col-lg-8 order-2 order-lg-1">
+                    <article id="article-container">
+                        <div class="loading-state">
+                            <div class="loading-spinner"></div>
+                            <p>Memuat artikel...</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 mx-auto mx-lg-0 order-1 order-lg-2">
+                    <div class="dev-card">
+                        <div class="dev-card-header">
+                            <span class="dev-card-label">TENTANG DEVELOPER</span>
+                        </div>
+                        <div class="dev-card-body">
+                            <div class="dev-logo-wrap">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv9c-7o4r4xcXWVyFZqzIh7czhn0f9GaIZKQ&s" alt="Logo Studio" class="dev-logo">
+                            </div>
+                            <div class="dev-info" id="dev-info">
+                                <div class="loading-state-sm">Memuat info...</div>
+                            </div>
+                            <a href="#" class="dev-btn">Kunjungi Website →</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <section class="comment-section mt-5 pt-5">
+                <div class="comment-header">
+                    <h3 class="comment-title">Tinggalkan Komentar</h3>
+                    <div class="comment-title-line"></div>
+                </div>
+                <div class="comment-form-card">
+                    <input type="text" id="userName" class="fz-input" placeholder="Nama Anda">
+                    <textarea id="commentBox" class="fz-input fz-textarea" placeholder="Tulis pendapatmu tentang game ini..."></textarea>
+                    <button id="submitBtn" onclick="postComment()" class="fz-submit-btn">
+                        <span>Kirim Komentar</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+                <div id="commentList" class="mt-4"></div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="fz-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <span class="footer-brand">FORZA HORIZON REVIEW</span>
+                <span class="footer-copy">© 2025 — Semua hak dilindungi</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
